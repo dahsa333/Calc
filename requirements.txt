@@ -1,0 +1,4 @@
+csv==3.2.1
+numpy==1.16.4
+opencv-python==4.4.0.40
+matplotlib==3.0.3
