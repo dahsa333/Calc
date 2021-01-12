@@ -5,7 +5,7 @@ import cv2
 import pathlib
 
 
-class GraphData():
+class GraphData:
     def __init__(self, csv_description_name):
         info = self.read_description(csv_description_name)
         self.image_name = info[0]
@@ -19,8 +19,10 @@ class GraphData():
         self.step_y = float(info[18])
         self.color_find = (int(info[21]), int(info[20]), int(info[19]))
         self.data_file_name = info[22]
+        self.data_points = []
 
-    def read_description(self, csv_description_name):
+    @staticmethod
+    def read_description(csv_description_name):
         info_list = []
         curr_path = str(pathlib.Path(__file__).parent.absolute())
         path = curr_path + "\\data_files\\graphs\\csv_description\\" + csv_description_name
@@ -36,7 +38,8 @@ class GraphData():
         image = cv2.imread(path, 1)
         return image
 
-    def show_image(self, window_name, image):
+    @staticmethod
+    def show_image(window_name, image):
         cv2.imshow(window_name, image)
         cv2.waitKey(0)
         cv2.destroyWindow(window_name)
@@ -83,17 +86,19 @@ class GraphData():
                 i = 0
         return data_points
 
-    def plot_graph_by_points(self, data_points):
-        data_x = []
-        data_y = []
-        for curr_data in data_points:
-            data_x.append(curr_data[0])
-            data_y.append(curr_data[1])
+    @staticmethod
+    def plot_graph_by_points(data_list):
         plt.title("$y = f(x)$")
         plt.ylabel("$y$")
         plt.xlabel("$x$")
         plt.grid(True, linestyle='-', color='0.75')
-        plt.plot(data_x, data_y)
+        for data_points in data_list:
+            data_x = []
+            data_y = []
+            for curr_data in data_points:
+                data_x.append(curr_data[0])
+                data_y.append(curr_data[1])
+            plt.plot(data_x, data_y)
         plt.show()
 
     def get_data(self, is_read, is_write, is_show):
@@ -129,13 +134,64 @@ class GraphData():
         if is_show is True:
             image = self.load_image()
             self.show_image("window_show", image)
-            self.plot_graph_by_points(data_points)
+            self.plot_graph_by_points([data_points])
+        self.data_points = data_points
         return data_points
+
+    def find_max_y_point(self):
+        save_point = [0.0, 0.0]
+        max_y = -99999999999.9
+        for curr_point in self.data_points:
+            if curr_point[1] > max_y:
+                max_y = curr_point[1]
+                save_point = curr_point
+        return save_point
+
+    def find_nearest_x_point(self, x):
+        save_point = [0.0, 0.0]
+        min_diff = 99999999999.9
+        for curr_point in self.data_points:
+            diff = abs(x - curr_point[0])
+            if diff < min_diff:
+                min_diff = diff
+                save_point = curr_point
+        return save_point
+
+    @staticmethod
+    def create_average_list(data_1, val1, data_2, val2, val3):
+        save_point = [0.0, 0.0]
+        data_aver = []
+        if val2 > val1:
+            val_max = val2
+            data_max = data_2
+            val_min = val1
+            data_min = data_1
+        else:
+            val_max = val1
+            data_max = data_1
+            val_min = val2
+            data_min = data_2
+        val_aver_relative = (val3 - val_min) / (val_max - val_min)
+        max_x = data_max[-1][0]
+        for curr_min in data_min:
+            if curr_min[0] > max_x:
+                break
+            min_diff = 99999999999.9
+            for curr_max in data_max:
+                diff_x = curr_min[0] - curr_max[0]
+                if abs(diff_x) < min_diff:
+                    min_diff = abs(diff_x)
+                    save_point = curr_max
+            delta_x = save_point[0] - curr_min[0]
+            delta_y = save_point[1] - curr_min[1]
+            curr_aver = [curr_min[0] + delta_x * val_aver_relative, curr_min[1] + delta_y * val_aver_relative]
+            data_aver.append(curr_aver)
+        return data_aver
 
 
 def example(): 
     my_graph = GraphData("example_description.csv")
-    #get_data(is_read, is_write, is_show)
+    # get_data(is_read, is_write, is_show)
     data_list = my_graph.get_data(True, True, True)
 
 
