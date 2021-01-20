@@ -28,10 +28,24 @@ def calc_parts_call_test(f):
     # outer diameter and peripheral speed
     clc = import_parts_by_number("004")
     clc.run(f, True, False)
-
     # selection of the degree of reaction
     clc = import_parts_by_number("005")
     clc.run(f, True, False)
+    # phi distribution law and type of flow path
+    clc = import_parts_by_number("006")
+    clc.run(f, True, False)
+    # number of compressor stages
+    clc = import_parts_by_number("007")
+    clc.run(f, True, False)
+    # efficiency
+    clc = import_parts_by_number("008")
+    clc.run(f, True, False)
+    # length of blades
+    clc = import_parts_by_number("009")
+    clc.run(f, True, False)
+    # selection of parameters
+    clc = import_parts_by_number("010")
+    clc.run(f, True, True)
 
 
 def main():

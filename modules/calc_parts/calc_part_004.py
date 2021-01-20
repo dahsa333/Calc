@@ -3,13 +3,17 @@ def add_variables(f):
     f.add_variable("rвт", 0.0, "")
     f.add_variable("Dн", 0.0, "")
     f.add_variable("uн", 0.0, "")
+    # for next parts
+    f.add_variable("Dн_посл", None, "")
+    f.add_variable("eta_посл", None, "")
+    f.add_variable("psi_посл", None, "")
 
 
 def print_calc_res(f):
     print("*********************************")
     print("outer diameter and peripheral speed (004):")
-    print("         Dн = ", f.v["phi1"])
-    print("         Dн = ", f.v["rвт"])
+    print("         phi1 = ", f.v["phi1"])
+    print("         rвт = ", f.v["rвт"])
     print("         Dн = ", f.v["Dн"])
     print("         uн = ", f.v["uн"])
     print("*********************************\n")
@@ -17,7 +21,7 @@ def print_calc_res(f):
 
 def calc_part(f):
     f.v["phi1"] = 0.47
-    f.v["rвт"] = 0.55
+    f.v["rвт"] = 0.6
     h_var1 = f.v["m"] * f.v["R"] * f.v["TВ*"]
     h_var2 = (1.0 - pow(f.v["rвт"], 2.0)) * f.v["p1*"] * f.v["n"] * f.v["phi1"]
     f.v["Dн"] = 2.9 * pow(h_var1 / h_var2, 1.0 / 3.0)

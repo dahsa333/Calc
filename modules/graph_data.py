@@ -126,8 +126,8 @@ class GraphData:
                         if np.abs(pixel[0] - self.color_find[0]) < delta_color:
                             if np.abs(pixel[1] - self.color_find[1]) < delta_color:
                                 if np.abs(pixel[2] - self.color_find[2]) < delta_color:
-                                    x_coor, y_coor = self.from_window_to_real_cycle(win_x, j, dx_cycle, dy_cycle)
-                                    data_points.append([x_coor, y_coor])
+                                    x_cor, y_cor = self.from_window_to_real_cycle(win_x, j, dx_cycle, dy_cycle)
+                                    data_points.append([x_cor, y_cor])
                                     break
         if is_write is True:
             self.write_data(data_points)
@@ -187,6 +187,27 @@ class GraphData:
             curr_aver = [curr_min[0] + delta_x * val_aver_relative, curr_min[1] + delta_y * val_aver_relative]
             data_aver.append(curr_aver)
         return data_aver
+
+    @staticmethod
+    def find_nearest_x_point_in_list(find_list, x):
+        save_point = [0.0, 0.0]
+        min_diff = 99999999999.9
+        for curr_point in find_list:
+            diff = abs(x - curr_point[0])
+            if diff < min_diff:
+                min_diff = diff
+                save_point = curr_point
+        return save_point
+
+    @staticmethod
+    def find_max_y_point_in_list(find_list):
+        save_point = [0.0, 0.0]
+        max_y = -99999999999.9
+        for curr_point in find_list:
+            if curr_point[1] > max_y:
+                max_y = curr_point[1]
+                save_point = curr_point
+        return save_point
 
 
 def example(): 
