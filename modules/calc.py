@@ -45,6 +45,12 @@ def calc_parts_call_test(f):
     clc.run(f, True, False)
     # selection of parameters
     clc = import_parts_by_number("010")
+    clc.run(f, True, False)
+    # calculation of coefficients - k_psi and k_eta
+    clc = import_parts_by_number("011")
+    clc.run(f, True, False)
+    # first step calculation
+    clc = import_parts_by_number("012")
     clc.run(f, True, True)
 
 

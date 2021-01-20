@@ -207,6 +207,180 @@ def st_k_100_2l_psi(x_value):
     return f_list
 
 
+def eta_sz(x_value):
+    # x_value = S2z_aver_rel
+    if x_value <= 0.1:
+        use_graph = GraphData("Eta_Sz_01.csv")
+        f_list = use_graph.get_data(True, False, False)
+    elif x_value <= 0.2:
+        h_graph_1 = GraphData("Eta_Sz_01.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("Eta_Sz_02.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.1, h_graph_2.data_points, 0.2, x_value)
+    elif x_value <= 0.4:
+        h_graph_1 = GraphData("Eta_Sz_02.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("Eta_Sz_04.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.2, h_graph_2.data_points, 0.4, x_value)
+    elif x_value <= 0.8:
+        h_graph_1 = GraphData("Eta_Sz_04.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("Eta_Sz_05.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.4, h_graph_2.data_points, 0.8, x_value)
+    else:
+        use_graph = GraphData("Eta_Sz_08.csv")
+        f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def psi_sz(x_value):
+    # x_value = S2z_aver_rel
+    if x_value <= 0.1:
+        use_graph = GraphData("Psi_Sz_01.csv")
+        f_list = use_graph.get_data(True, False, False)
+    elif x_value <= 0.2:
+        h_graph_1 = GraphData("Psi_Sz_01.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("Psi_Sz_02.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.1, h_graph_2.data_points, 0.2, x_value)
+    elif x_value <= 0.4:
+        h_graph_1 = GraphData("Psi_Sz_02.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("Psi_Sz_04.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.2, h_graph_2.data_points, 0.4, x_value)
+    elif x_value <= 0.8:
+        h_graph_1 = GraphData("Psi_Sz_04.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("Psi_Sz_05.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.4, h_graph_2.data_points, 0.8, x_value)
+    else:
+        use_graph = GraphData("Psi_Sz_08.csv")
+        f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def rk_eta_minus():
+    use_graph = GraphData("rketaminus.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def rk_eta_plus():
+    use_graph = GraphData("rketaplus.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_psi_dr_plus_50(x_value):
+    # x_value = S2z_aver_rel
+    if x_value <= 0.0:
+        use_graph = GraphData("phikpsiplus_50_00.csv")
+        f_list = use_graph.get_data(True, False, False)
+    elif x_value <= 0.1:
+        h_graph_1 = GraphData("phikpsiplus_50_00.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("phikpsiplus_50_01.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.0, h_graph_2.data_points, 0.1, x_value)
+    elif x_value <= 0.2:
+        h_graph_1 = GraphData("phikpsiplus_50_01.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("phikpsiplus_50_02.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.1, h_graph_2.data_points, 0.2, x_value)
+    else:
+        use_graph = GraphData("phikpsiplus_50_02.csv")
+        f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_psi_dr_minus_50(x_value):
+    # x_value = S2z_aver_rel
+    if x_value >= 0.0:
+        use_graph = GraphData("phikpsiminus_50_00.csv")
+        f_list = use_graph.get_data(True, False, False)
+    elif x_value >= -0.1:
+        h_graph_1 = GraphData("phikpsiminus_50_00.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("phikpsiminus_50_01.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.0, h_graph_2.data_points, -0.1, x_value)
+    elif x_value >= -0.2:
+        h_graph_1 = GraphData("phikpsiminus_50_01.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("phikpsiminus_50_02.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, -0.1, h_graph_2.data_points, -0.2, x_value)
+    else:
+        use_graph = GraphData("phikpsiminus_50_02.csv")
+        f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_psi_dr_plus_70(x_value):
+    # x_value = S2z_aver_rel
+    if x_value <= 0.1:
+        use_graph = GraphData("phikpsi_70_10.csv")
+        f_list = use_graph.get_data(True, False, False)
+    elif x_value <= 0.2:
+        h_graph_1 = GraphData("phikpsi_70_10.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("phikpsi_70_20.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.1, h_graph_2.data_points, 0.2, x_value)
+    elif x_value <= 0.25:
+        h_graph_1 = GraphData("phikpsi_70_20.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("phikpsi_70_25.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.2, h_graph_2.data_points, 0.25, x_value)
+    else:
+        use_graph = GraphData("phikpsi_70_25.csv")
+        f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_psi_dr_minus_70(x_value):
+    # x_value = S2z_aver_rel
+    if x_value >= -0.1:
+        use_graph = GraphData("phikpsi_minus_70_10.csv")
+        f_list = use_graph.get_data(True, False, False)
+    elif x_value >= -0.2:
+        h_graph_1 = GraphData("phikpsi_minus_70_10.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("phikpsi_minus_70_20.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, -0.1, h_graph_2.data_points, -0.2, x_value)
+    elif x_value >= -0.25:
+        h_graph_1 = GraphData("phikpsi_minus_70_20.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("phikpsi_minus_70_25.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, -0.2, h_graph_2.data_points, -0.25, x_value)
+    else:
+        use_graph = GraphData("phikpsi_minus_70_25.csv")
+        f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_psi_dr_plus_100():
+    use_graph = GraphData("phikpsi_plus_100.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_psi_dr_minus_100():
+    use_graph = GraphData("phikpsi_minus_100.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
 def st_k_50_1_get_eta(f):
     f_list = st_k_50_1_eta(f.v["uн"])
     f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
@@ -252,4 +426,64 @@ def st_k_100_2l_get_eta(f):
 def st_k_100_2l_get_psi(f):
     f_list = st_k_100_2l_psi(f.v["uн"])
     f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
+    return f_point[1]
+
+
+def psi_sz_get_psi(f):
+    f_list = psi_sz(f.v["S2z_aver_rel"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["S1z_aver_rel"])
+    return f_point[1]
+
+
+def eta_sz_get_eta(f):
+    f_list = eta_sz(f.v["S2z_aver_rel"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["S1z_aver_rel"])
+    return f_point[1]
+
+
+def rk_eta_minus_get_k(f):
+    f_list = rk_eta_minus()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["dr_н"])
+    return f_point[1]
+
+
+def rk_eta_plus_get_k(f):
+    f_list = rk_eta_plus()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["dr_вт"])
+    return f_point[1]
+
+
+def k_psi_dr_plus_50_get_k(f):
+    f_list = k_psi_dr_plus_50(f.v["dr_вт"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
+    return f_point[1]
+
+
+def k_psi_dr_minus_50_get_k(f):
+    f_list = k_psi_dr_minus_50(f.v["dr_н"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
+    return f_point[1]
+
+
+def k_psi_dr_plus_70_get_k(f):
+    f_list = k_psi_dr_plus_70(f.v["dr_вт"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
+    return f_point[1]
+
+
+def k_psi_dr_minus_70_get_k(f):
+    f_list = k_psi_dr_minus_70(f.v["dr_н"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
+    return f_point[1]
+
+
+def k_psi_dr_plus_100_get_k(f):
+    f_list = k_psi_dr_plus_100()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["dr_вт"])
+    return f_point[1]
+
+
+def k_psi_dr_minus_100_get_k(f):
+    f_list = k_psi_dr_minus_100()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["dr_н"])
     return f_point[1]
