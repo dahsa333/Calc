@@ -1,5 +1,5 @@
 import math
-from graph_data import GraphData
+from modules.graph_data import GraphData
 
 
 def add_variables(f):
@@ -50,9 +50,9 @@ def calc_part(f):
     else:
         psi_aver = f.v["psi"]
     if f.v["тип проточной части"] == 1:
-        k_psi = 0.97
+        k_psi = 0.98
     else:
-        k_psi = 0.95
+        k_psi = 0.97
     f.v["Hср_ст*"] = k_psi * psi_aver * pow(f.v["uн"], 2.0) / 2.0
     f.v["alpha"] = get_alpha_value(f)
     f.v["HрЛА*"] = f.v["alpha"] * f.v["HЛА*"]

@@ -1,5 +1,5 @@
-from graph_data import GraphData
-import graph_save_data as gs
+from modules.graph_data import GraphData
+import modules.graph_save_data as gs
 
 
 def add_variables(f):
@@ -126,6 +126,14 @@ def param_clarification(f, is_cycle):
         n_iter += 1
         if n_iter > max_n_iter:
             break
+    if f.v["тип ступени"] == 1:
+        f.v["psi"] = gs.st_k_50_1_get_psi(f)
+    elif f.v["тип ступени"] == 2:
+        f.v["psi"] = gs.st_k_50_5_get_psi(f)
+    elif f.v["тип ступени"] == 3:
+        f.v["psi"] = gs.st_k_70_17_get_psi(f)
+    elif f.v["тип ступени"] == 4:
+        f.v["psi"] = gs.st_k_100_2l_get_psi(f)
 
 
 def calc_part(f):

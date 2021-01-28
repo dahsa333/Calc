@@ -1,9 +1,12 @@
 import math
-from graph_data import GraphData
-import graph_save_data as gs
+from modules.graph_data import GraphData
+import modules.graph_save_data as gs
 
 
 def add_variables(f):
+    f.add_variable("l_aver", 0.0, "")
+    f.add_variable("drн_ср_rel", 0.0, "")
+    f.add_variable("drвт_ср_rel", 0.0, "")
     f.add_variable("l_aver", 0.0, "")
     f.add_variable("b_aver", 0.0, "")
     f.add_variable("l_aver_rel", 0.0, "")
@@ -32,6 +35,8 @@ def print_calc_res(f):
     print("*********************************")
     print("calculation of coefficients - k_psi and k_eta (011):")
     print("         l_aver = ", f.v["l_aver"])
+    print("         drн_ср_rel = ", f.v["drн_ср_rel"])
+    print("         drвт_ср_rel = ", f.v["drвт_ср_rel"])
     print("         b_aver = ", f.v["b_aver"])
     print("         l_aver_rel = ", f.v["l_aver_rel"])
     print("         S1z_aver = ", f.v["S1z_aver"])
@@ -40,7 +45,7 @@ def print_calc_res(f):
     print("         S2z_aver_rel = ", f.v["S2z_aver_rel"])
     print("         Sr_aver_rel = ", f.v["Sr_aver_rel"])
     print("         k_psi_м = ", f.v["k_psi_м"])
-    print("         k_eta_м = ", f.v["k_psi_м"])
+    print("         k_eta_м = ", f.v["k_eta_м"])
     print("         k_psi_зl = ", f.v["k_psi_зl"])
     print("         k_eta_зl = ", f.v["k_eta_зl"])
     print("         k_psi_z = ", f.v["k_psi_z"])
@@ -58,6 +63,12 @@ def print_calc_res(f):
 
 def geometric_parameters(f):
     f.v["l_aver"] = (f.v["l1"] + f.v["l2"]) / 2.0
+    if f.v["тип проточной части"] == 1:
+        f.v["drн_ср_rel"] = f.v["dr_н"]
+        f.v["drвт_ср_rel"] = (0.0 + f.v["dr_вт"]) / 2.0
+    elif f.v["тип проточной части"] == 2:
+        f.v["drн_ср_rel"] = (0.0 + f.v["dr_н"]) / 2.0
+        f.v["drвт_ср_rel"] = f.v["dr_вт"]
     if f.v["OmegaТ"] == 0.5:
         f.v["b_aver"] = 0.45 * f.v["l_aver"]
         f.v["l_aver_rel"] = 2.25
@@ -147,9 +158,9 @@ def coefficients_func_4(f):
         if f.v["тип ступени"] == 1 or f.v["тип ступени"] == 2:
             f.v["k_psi_dr_вт"] = gs.k_psi_dr_plus_50_get_k(f)
         elif f.v["тип ступени"] == 3:
-            print()
+            f.v["k_psi_dr_вт"] = gs.k_psi_dr_plus_70_get_k(f)
         elif f.v["тип ступени"] == 4:
-            print()
+            f.v["k_psi_dr_вт"] = gs.k_psi_dr_plus_100_get_k(f)
     if f.v["dr_н"] == 0.0:
         f.v["k_psi_dr_н"] = 1.0
         f.v["k_eta_dr_н"] = 1.0
@@ -158,9 +169,9 @@ def coefficients_func_4(f):
         if f.v["тип ступени"] == 1 or f.v["тип ступени"] == 2:
             f.v["k_psi_dr_н"] = gs.k_psi_dr_minus_50_get_k(f)
         elif f.v["тип ступени"] == 3:
-            print()
+            f.v["k_psi_dr_н"] = gs.k_psi_dr_minus_70_get_k(f)
         elif f.v["тип ступени"] == 4:
-            print()
+            f.v["k_psi_dr_н"] = gs.k_psi_dr_minus_100_get_k(f)
     f.v["k_psi_dr"] = f.v["k_psi_dr_вт"] * f.v["k_psi_dr_н"]
     f.v["k_eta_dr"] = f.v["k_eta_dr_вт"] * f.v["k_eta_dr_н"]
 

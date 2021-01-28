@@ -1,4 +1,5 @@
 def add_variables(f):
+    '''
     f.add_variable("m", 65, "")
     f.add_variable("ПК*", 3.4, "")
     f.add_variable("pВ*", 98100, "")
@@ -9,7 +10,7 @@ def add_variables(f):
     f.add_variable("тип привода", 0, "")
     f.add_variable("etaК", 0.9, "")
     f.add_variable("pi", 3.14159265359, "")
-    '''
+
     f.add_variable("m", 62, "")
     f.add_variable("ПК*", 3.7, "")
     f.add_variable("pВ*", 98100, "")
@@ -21,7 +22,7 @@ def add_variables(f):
     f.add_variable("тип привода", 0, "")
     f.add_variable("etaК", 0.86, "")
     f.add_variable("pi", 3.14159265359, "")
-    
+    '''
     f.add_variable("m", 75, "")
     f.add_variable("ПК*", 3.45, "")
     f.add_variable("pВ*", 98100, "")
@@ -33,7 +34,6 @@ def add_variables(f):
     f.add_variable("тип привода", 0, "")
     f.add_variable("etaК", 0.86, "")
     f.add_variable("pi", 3.14159265359, "")
-    '''
 
 
 def print_calc_res(f):

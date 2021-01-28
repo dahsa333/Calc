@@ -1,11 +1,18 @@
-from modules import app
+import ctypes
+from modules import calc
 
 
 def main():
-    work_list_file = open(r"modules/work/work_list.txt", "r")
-    work_list = [line.strip() for line in work_list_file]
-    app.app_launch(work_list)
+    calc.main()
+
+
+def full_window():
+    kernel32 = ctypes.WinDLL("kernel32")
+    user32 = ctypes.WinDLL("user32")
+    user32.ShowWindow(kernel32.GetConsoleWindow(), 3)
 
 
 if __name__ == "__main__":
+    # full_window()
     main()
+    # input("Press to continue...")

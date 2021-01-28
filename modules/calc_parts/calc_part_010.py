@@ -1,8 +1,8 @@
 import math
-import calc_parts.calc_part_005 as clc5
-import calc_parts.calc_part_007 as clc7
-import calc_parts.calc_part_008 as clc8
-import calc_parts.calc_part_009 as clc9
+from modules.calc_parts import calc_part_005 as clc5
+from modules.calc_parts import calc_part_007 as clc7
+from modules.calc_parts import calc_part_008 as clc8
+from modules.calc_parts import calc_part_009 as clc9
 
 
 def add_variables(f):
@@ -36,9 +36,9 @@ def print_calc_res(f):
     str_r += "|" + to_fixed(f.v["etaЛА"], 4)
     str_r += "|" + to_fixed(f.v["dr_вт"], 4)
     if f.v["dr_н"] < 0:
-        str_r += "|" + to_fixed(f.v["dr_н"], 4) + "|" + "\n"
+        str_r += "|" + to_fixed(f.v["dr_н"], 4) + "|"
     else:
-        str_r += "|" + to_fixed(f.v["dr_н"], 4) + " |" + "\n"
+        str_r += "|" + to_fixed(f.v["dr_н"], 4) + " |"
     print(str_r)
 
 
@@ -176,6 +176,7 @@ def calc_part(f, is_print_res):
                         if f.v["i_int"] < n_min_st:
                             n_min_st = f.v["i_int"]
                             best_param = [i_r, i_st, i_t_st]
+    # best_param = [1, 2, 2]
     if best_param[1] == 4:
         f.v["rвт"] = 0.5 + best_param[0] * delta_r
     else:

@@ -1,6 +1,6 @@
 import math
-from graph_data import GraphData
-import graph_save_data as gs
+from modules.graph_data import GraphData
+import modules.graph_save_data as gs
 
 
 def add_variables(f):
@@ -142,7 +142,7 @@ def print_end_str(f):
     print("*********************************\n")
 
 
-def calc_part(f):
+def calc_part(f, is_print_res):
     is_new_i = False
     new_i = 0
     for i in range(1, f.v["i_int"] + 1):
@@ -217,15 +217,13 @@ def calc_part(f):
         f.v["r_вт_rel" + s(i)] = f.v["D_вт" + s(i)] / f.v["Dн1"]
         f.v["l_" + s(i)] = (f.v["D_н" + s(i)] - f.v["D_вт" + s(i)]) / 2.0
         f.v["l_rel" + s(i)] = f.v["l_" + s(i)] / f.v["b_aver"]
-        print_calc_st_res(f, i)
-    if new_i < f.v["i_int"]:
-        f.v["i_int"] = new_i
-    f.v["П_ЛА*"] = f.v["p*" + s(f.v["i_int"])] / f.v["p*" + s(1)]
+        if is_print_res is True:
+            print_calc_st_res(f, i)
+    f.v["П_ЛА*"] = f.v["p_з*" + s(f.v["i_int"])] / f.v["p*" + s(1)]
     h_3 = f.v["k"] / (f.v["k"] - 1.0)
-    h_4 = f.v["p*" + s(f.v["i_int"])] / f.v["p*" + s(1)]
-    f.v["H_ЛА*"] = h_3 * f.v["R"] * f.v["T*" + s(1)] * (pow(h_4, 1.0 / h_3) - 1.0)
-    f.v["dTад_ЛА*"] = f.v["H_ЛА*"] / 1005.0
-    f.v["dT_ЛА*"] = f.v["T*" + s(f.v["i_int"])] - f.v["T*" + s(1)]
+    f.v["H_ЛА*"] = h_3 * f.v["R"] * f.v["T*" + s(1)] * (pow(f.v["П_ЛА*"], 1.0 / h_3) - 1.0)
+    f.v["dTад_ЛА*"] = f.v["H_ЛА*"] / (h_3 * f.v["R"])
+    f.v["dT_ЛА*"] = f.v["T_з*" + s(f.v["i_int"])] - f.v["T*" + s(1)]
     f.v["eta_ЛА"] = f.v["dTад_ЛА*"] / f.v["dT_ЛА*"]
     f.v["N_ЛА"] = f.v["m"] * f.v["H_ЛА*"] / (1000.0 * f.v["eta_ЛА"])
 
@@ -235,6 +233,6 @@ def run(field, is_add_variables, is_print_res):
         add_variables(field)
     if is_print_res:
         print_start_str()
-    calc_part(field)
+    calc_part(field, is_print_res)
     if is_print_res:
         print_end_str(field)

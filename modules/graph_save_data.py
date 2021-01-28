@@ -1,4 +1,4 @@
-from graph_data import GraphData
+from .graph_data import GraphData
 
 
 def st_k_50_1_eta(x_value):
@@ -381,6 +381,218 @@ def k_psi_dr_minus_100():
     return f_list
 
 
+def k_50_1_a1z():
+    use_graph = GraphData("K50_1_a1z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_1_a2z():
+    use_graph = GraphData("K50_1_a2z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_1_a4z():
+    use_graph = GraphData("K50_1_a4z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_1_b1z():
+    use_graph = GraphData("K50_1_b1z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_1_b2z():
+    use_graph = GraphData("K50_1_b2z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_1_b4z():
+    use_graph = GraphData("K50_1_b4z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_5_a3z():
+    use_graph = GraphData("K50_5_a3z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_a1z():
+    use_graph = GraphData("K70_17_a1z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_a2z():
+    use_graph = GraphData("K70_17_a2z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_a3z():
+    use_graph = GraphData("K70_17_a3z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_b1z():
+    use_graph = GraphData("K70_17_b1z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_b2z():
+    use_graph = GraphData("K70_17_b2z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_b3z():
+    use_graph = GraphData("K70_17_b3z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_a1z():
+    use_graph = GraphData("K100_2l_a1z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_a2z():
+    use_graph = GraphData("K100_2l_a2z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_a3z():
+    use_graph = GraphData("K100_2l_a3z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_b1z():
+    use_graph = GraphData("K100_2l_b1z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_b2z():
+    use_graph = GraphData("K100_2l_b2z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_b3z():
+    use_graph = GraphData("K100_2l_b3z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_b4z():
+    use_graph = GraphData("K100_2l_b4z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_5_b3z():
+    use_graph = GraphData("K50_5_b3z.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_1_alpha_1():
+    use_graph = GraphData("k_50_1_alpha_1.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_50_1_alpha_2(x_value):
+    if x_value <= 0.4235:
+        use_graph = GraphData("k_50_1_alpha_2_408.csv")
+        f_list = use_graph.get_data(True, False, False)
+    elif x_value <= 0.476:
+        h_graph_1 = GraphData("k_50_1_alpha_2_408.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("k_50_1_alpha_2_476.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.4235, h_graph_2.data_points, 0.476, x_value)
+    elif x_value <= 0.524:
+        h_graph_1 = GraphData("k_50_1_alpha_2_476.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("k_50_1_alpha_2_524.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.476, h_graph_2.data_points, 0.524, x_value)
+    elif x_value <= 0.567:
+        h_graph_1 = GraphData("k_50_1_alpha_2_524.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("k_50_1_alpha_2_567.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.524, h_graph_2.data_points, 0.567, x_value)
+    else:
+        use_graph = GraphData("k_50_1_alpha_2_567.csv")
+        f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_alpha_2(x_value):
+    if x_value <= 0.408:
+        use_graph = GraphData("k_70_17_alpha_2_408.csv")
+        f_list = use_graph.get_data(True, False, False)
+    elif x_value <= 0.485:
+        h_graph_1 = GraphData("k_70_17_alpha_2_408.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("k_70_17_alpha_2_485.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.408, h_graph_2.data_points, 0.485, x_value)
+    elif x_value <= 0.546:
+        h_graph_1 = GraphData("k_70_17_alpha_2_485.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("k_70_17_alpha_2_546.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.485, h_graph_2.data_points, 0.546, x_value)
+    elif x_value <= 0.603:
+        h_graph_1 = GraphData("k_70_17_alpha_2_546.csv")
+        h_graph_1.get_data(True, False, False)
+        h_graph_2 = GraphData("k_70_17_alpha_2_603.csv")
+        h_graph_2.get_data(True, False, False)
+        f_list = GraphData.create_average_list(h_graph_1.data_points, 0.546, h_graph_2.data_points, 0.603, x_value)
+    else:
+        use_graph = GraphData("k_70_17_alpha_2_603.csv")
+        f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_alpha_3():
+    use_graph = GraphData("k_70_17_alpha_3.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_70_17_alpha_1():
+    use_graph = GraphData("k_70_17_alpha_1.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_alpha_3():
+    use_graph = GraphData("k_100_2l_alpha_3.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
+def k_100_2l_alpha_1():
+    use_graph = GraphData("k_100_2l_alpha_1.csv")
+    f_list = use_graph.get_data(True, False, False)
+    return f_list
+
+
 def st_k_50_1_get_eta(f):
     f_list = st_k_50_1_eta(f.v["uн"])
     f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
@@ -435,6 +647,12 @@ def psi_sz_get_psi(f):
     return f_point[1]
 
 
+def psi_sz_get_psi_14(f, s2z, s1z):
+    f_list = psi_sz(f.v["S2z_aver_rel"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["S1z_aver_rel"])
+    return f_point[1]
+
+
 def eta_sz_get_eta(f):
     f_list = eta_sz(f.v["S2z_aver_rel"])
     f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["S1z_aver_rel"])
@@ -443,47 +661,264 @@ def eta_sz_get_eta(f):
 
 def rk_eta_minus_get_k(f):
     f_list = rk_eta_minus()
-    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["dr_н"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["drн_ср_rel"])
     return f_point[1]
 
 
 def rk_eta_plus_get_k(f):
     f_list = rk_eta_plus()
-    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["dr_вт"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["drвт_ср_rel"])
     return f_point[1]
 
 
 def k_psi_dr_plus_50_get_k(f):
-    f_list = k_psi_dr_plus_50(f.v["dr_вт"])
+    f_list = k_psi_dr_plus_50(f.v["drвт_ср_rel"])
     f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
     return f_point[1]
 
 
 def k_psi_dr_minus_50_get_k(f):
-    f_list = k_psi_dr_minus_50(f.v["dr_н"])
+    f_list = k_psi_dr_minus_50(f.v["drн_ср_rel"])
     f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
     return f_point[1]
 
 
 def k_psi_dr_plus_70_get_k(f):
-    f_list = k_psi_dr_plus_70(f.v["dr_вт"])
+    f_list = k_psi_dr_plus_70(f.v["drвт_ср_rel"])
     f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
     return f_point[1]
 
 
 def k_psi_dr_minus_70_get_k(f):
-    f_list = k_psi_dr_minus_70(f.v["dr_н"])
+    f_list = k_psi_dr_minus_70(f.v["drн_ср_rel"])
     f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["phi1"])
     return f_point[1]
 
 
 def k_psi_dr_plus_100_get_k(f):
     f_list = k_psi_dr_plus_100()
-    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["dr_вт"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["drвт_ср_rel"])
     return f_point[1]
 
 
 def k_psi_dr_minus_100_get_k(f):
     f_list = k_psi_dr_minus_100()
-    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["dr_н"])
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, f.v["drн_ср_rel"])
+    return f_point[1]
+
+
+def k_50_1_a1z_get(x_value):
+    f_list = k_50_1_a1z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_50_1_a2z_get(x_value):
+    f_list = k_50_1_a2z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_50_1_a4z_get(x_value):
+    f_list = k_50_1_a4z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_50_1_b1z_get(x_value):
+    f_list = k_50_1_b1z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_50_1_b2z_get(x_value):
+    f_list = k_50_1_b2z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_50_1_b4z_get(x_value):
+    f_list = k_50_1_b4z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_50_5_a3z_get(x_value):
+    f_list = k_50_5_a3z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_50_5_b3z_get(x_value):
+    f_list = k_50_5_b3z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_a1z_get(x_value):
+    f_list = k_70_17_a1z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_a2z_get(x_value):
+    f_list = k_70_17_a2z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_a3z_get(x_value):
+    f_list = k_70_17_a3z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_b1z_get(x_value):
+    f_list = k_70_17_b1z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_b2z_get(x_value):
+    f_list = k_70_17_b2z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_b3z_get(x_value):
+    f_list = k_70_17_b3z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_a1z_get(x_value):
+    f_list = k_100_2l_a1z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_a2z_get(x_value):
+    f_list = k_100_2l_a2z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_a3z_get(x_value):
+    f_list = k_100_2l_a3z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_b1z_get(x_value):
+    f_list = k_100_2l_b1z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_b2z_get(x_value):
+    f_list = k_100_2l_b2z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_b3z_get(x_value):
+    f_list = k_100_2l_b3z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_b4z_get(x_value):
+    f_list = k_100_2l_b4z()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def rk_eta_minus_get_k_14(f, x_value):
+    f_list = rk_eta_minus()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def rk_eta_plus_get_k_14(f, x_value):
+    f_list = rk_eta_plus()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_psi_dr_plus_50_get_k_15(f, gr_value, x_value):
+    f_list = k_psi_dr_plus_50(gr_value)
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_psi_dr_minus_50_get_k_15(f, gr_value, x_value):
+    f_list = k_psi_dr_minus_50(gr_value)
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_psi_dr_plus_70_get_k_15(f, gr_value, x_value):
+    f_list = k_psi_dr_plus_70(gr_value)
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_psi_dr_minus_70_get_k_15(f, gr_value, x_value):
+    f_list = k_psi_dr_minus_70(gr_value)
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_psi_dr_plus_100_get_k_15(f, gr_value, x_value):
+    f_list = k_psi_dr_plus_100()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, gr_value)
+    return f_point[1]
+
+
+def k_psi_dr_minus_100_get_k_15(f, gr_value, x_value):
+    f_list = k_psi_dr_minus_100()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, gr_value)
+    return f_point[1]
+
+
+def k_50_1_alpha_1_get(f, x_value):
+    f_list = k_50_1_alpha_1()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_50_1_alpha_2_get(f, gr_value, x_value):
+    # gr_value - phi*, x_value - r_rel
+    f_list = k_50_1_alpha_2(gr_value)
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_alpha_2_get(f, gr_value, x_value):
+    f_list = k_70_17_alpha_2(gr_value)
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_alpha_3_get(f, x_value):
+    f_list = k_70_17_alpha_3()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_70_17_alpha_1_get(f, x_value):
+    f_list = k_70_17_alpha_1()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_alpha_3_get(f, x_value):
+    f_list = k_100_2l_alpha_3()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
+    return f_point[1]
+
+
+def k_100_2l_alpha_1_get(f, x_value):
+    f_list = k_100_2l_alpha_1()
+    f_point = GraphData.find_nearest_x_point_in_list(f_list, x_value)
     return f_point[1]
